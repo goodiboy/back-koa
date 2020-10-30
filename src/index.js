@@ -2,7 +2,7 @@ import Koa from 'koa'
 import path from 'path'
 import helmet from 'koa-helmet'
 import statics from 'koa-static'
-import Router from 'koa-router'
+import router from './router/routers'
 import koaBody from 'koa-body'
 import cors from '@koa/cors'
 import compose from 'koa-compose'
@@ -12,11 +12,7 @@ const isDevMode = process.env.NODE_ENV !== 'production';
 
 
 const app = new Koa()
-const router = new Router()
 
-router.get('/', ctx => {
-  ctx.body = 'hello webpack-node'
-})
 
 // 整合中间件
 const middleware = compose([
@@ -32,7 +28,7 @@ if (!isDevMode){
 }
 
 app.use(middleware)
-  .use(router.routes())
+  .use(router())
 
 app.listen(3000)
 
