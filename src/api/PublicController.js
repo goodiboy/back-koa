@@ -11,7 +11,7 @@ class PublicController {
       color: true, // 使用颜色
       noise: Math.floor((Math.random() * 5)),  // 线条的数量
       width: 150, // 宽度
-      height: 50 // 高度
+      height: 38 // 高度
     })
     ctx.body = {
       code: 200,
